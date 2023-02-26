@@ -17,6 +17,9 @@ class MainActivity : AppCompatActivity() {
 //    команда lateinit позволят делать отложенную инициализацию, а не сразу присваивать значение
     private lateinit var binding: ActivityMainBinding
 
+//    обьект user, которого м передадим в макет
+    private val userFromActivity: UserName = UserName("Maxim")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,13 @@ class MainActivity : AppCompatActivity() {
 //        создает вывод activity_main, показывает его и возвращает DataBinding
 //        DataBinding позволяет получать доступ к элементам на макете без использваония findViewById
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+//        задаем user на макете значение нашего userFromActivity
+        binding.userName = userFromActivity
+
+//        пример получения элементов макета через binding
+        val doneButton = binding.doneButton
+        val editNickname = binding.editNickname
+        val doneText = binding.doneText
 
 //        получаем кнопку по ее id
         val done_button = findViewById<Button>(R.id.done_button)
@@ -39,6 +49,11 @@ class MainActivity : AppCompatActivity() {
         done_button.setOnClickListener{ button ->
             addNickname(button as Button)
         }
+
+//        более короткий, удобный и правильный обработчик нажатия кнопки
+//        done_button.setOnClickListener{
+//            shortAddNickname()
+//        }
     }
 
 //    функция для обработчика
@@ -60,7 +75,20 @@ class MainActivity : AppCompatActivity() {
     val claviatura = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 //    прячем клавиатуру после нажатия кнопки
     claviatura.hideSoftInputFromWindow(button.windowToken, 0)
+    }
 
-
+    private fun shortAddNickname() {
+//        чтобы не писать слово binding много раз (засоряет код, делает его трудно читаемым
+//        можно обернуть в специальное выражение
+        binding.apply {
+            doneText.text = editNickname.text
+            editNickname.visibility = View.GONE
+            doneText.visibility = View.VISIBLE
+            doneButton.visibility = View.GONE
+        }
+        //    получаем сервис ввода (клавиатуру)
+        val claviatura = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        //    прячем клавиатуру после нажатия кнопки
+        claviatura.hideSoftInputFromWindow(binding.doneButton.windowToken, 0)
     }
 }

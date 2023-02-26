@@ -4,6 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+<!--Можно использовать переменные прямо внутри xml файла-->
+    <data>
+        <variable
+            name="userName"
+            type="com.example.third_task.UserName" />
+    </data>
+
+<!--Контейнер для прокручивания содержимого-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,11 +19,13 @@
         android:paddingTop="@dimen/small_padding"
         tools:context=".MainActivity">
 
+<!--Контейнер для содержимого-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+<!--Текстовое поле с именем, которое мы описывали с помощью вкладки Design-->
             <TextView
                 android:id="@+id/name_text_view"
                 android:layout_width="match_parent"
@@ -33,15 +43,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ПОЛЕ НАПИСАНО ВРУЧНУЮ"
-                android:textAlignment="center"
-                tools:layout_editor_absoluteX="104dp"
-                tools:layout_editor_absoluteY="43dp"/>
-
+<!--Текстовое поле с именем, в котором мы попробовали задать стиль с помощью .xml файла-->
             <TextView
                 android:id="@+id/textView2"
                 style="@style/NameStyle"
@@ -52,15 +54,18 @@
                 tools:layout_editor_absoluteX="164dp"
                 tools:layout_editor_absoluteY="70dp" />
 
+<!--Текстовое поле с именем, полученным из класса-->
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/usernameClass"
+                style="@style/NameStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ПОЛЕ НАПИСАНО С ПОМОЩЬЮ СТИЛЯ ВРУЧНУЮ"
+                android:text="@={userName.name}"
                 android:textAlignment="center"
-                tools:layout_editor_absoluteX="40dp"
-                tools:layout_editor_absoluteY="111dp"/>
+                tools:layout_editor_absoluteX="164dp"
+                tools:layout_editor_absoluteY="70dp" />
 
+<!--Поле для ввода текста-->
             <EditText
                 android:id="@+id/edit_nickname"
                 android:layout_width="match_parent"
@@ -69,6 +74,7 @@
                 android:textAlignment="center"
                 android:hint="@string/what_is_your_name"/>
 
+<!--Поле, в котором будет отображаться введенный текст. Изначально оно скрыто с экрана-->
             <TextView
                 android:id="@+id/done_text"
                 android:layout_width="match_parent"
@@ -79,6 +85,7 @@
                 android:visibility="gone"
                 style="@style/NameStyle"/>
 
+<!--Кнопка подтверждения окончания ввода-->
             <Button
                 android:id="@+id/done_button"
                 android:layout_width="wrap_content"
@@ -89,6 +96,7 @@
                 android:layout_marginTop="@dimen/layout_margin"
                 style="@style/Widget.AppCompat.Button.Colored"/>
 
+<!--Текстовое поле с большим содержимым-->
             <TextView
                 android:id="@+id/bio_text_view"
                 style="@style/NameStyle"
