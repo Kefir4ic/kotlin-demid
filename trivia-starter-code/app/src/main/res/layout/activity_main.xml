@@ -17,18 +17,24 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+<!--Контейнер для бокового меню-->
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-<!--Подключение фрагмента с названием и стартовой кнопкой-->
-<!--Код закомментирован во время настройки навигации-->
-<!--          <fragment-->
-<!--            android:id="@+id/titleFragment"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:name="com.example.android.navigation.TitleFragment"/>-->
+            <!--Подключение фрагмента с названием и стартовой кнопкой-->
+            <!--Код закомментирован во время настройки навигации-->
+            <!--          <fragment-->
+            <!--            android:id="@+id/titleFragment"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="match_parent"-->
+            <!--            android:name="com.example.android.navigation.TitleFragment"/>-->
 
             <fragment
                 android:id="@+id/navHostFragment"
@@ -38,5 +44,15 @@
                 app:navGraph="@navigation/navigation"
                 app:defaultNavHost="true"/>
         </LinearLayout>
-
+        
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/navdrawer_menu">
+        </com.google.android.material.navigation.NavigationView>
+        
+    </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

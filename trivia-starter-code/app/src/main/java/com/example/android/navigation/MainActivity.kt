@@ -19,27 +19,37 @@ package com.example.android.navigation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.navigateUp
 import com.example.android.navigation.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
+    private lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         @Suppress("UNUSED_VARIABLE")
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
 
+//        получаем боковое меню и потом передаем его 3-им агрументом в setupActionBarWithNavController
+        drawerLayout = binding.drawerLayout
+
         navController = findNavController(R.id.navHostFragment)
 
-        NavigationUI.setupActionBarWithNavController(this, navController)
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+//        добавляем поддуржку нажатия на кнопку вызова бокового меню
+        NavigationUI.setupWithNavController(binding.navView, navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp()
+//        return navController.navigateUp()
+//        изменили поддержку нажатия кнопок на верхней панели, чтобы были кнопки "назад" и "боковое меню"
+        return NavigationUI.navigateUp(navController, drawerLayout)
     }
 }

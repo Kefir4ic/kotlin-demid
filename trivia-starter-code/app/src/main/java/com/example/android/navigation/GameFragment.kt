@@ -98,11 +98,18 @@ class GameFragment : Fragment() {
                         binding.invalidateAll()
                     } else {
                         // We've won!  Navigate to the gameWonFragment.
-                        view.findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
+//                        реализация до подключения плагина для передачи данных
+//                        view.findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
+
+//                        теперь мы можем передать на другой экран какие-то данные(например, кол-во вопросов и кол-во правильных ответов)
+                        view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment(numQuestions, questionIndex))
                     }
                 } else {
                     // Game over! A wrong answer sends us to the gameOverFragment.
-                    view.findNavController().navigate(R.id.action_gameFragment_to_gameOverFragment)
+//                        реализация до подключения плагина для передачи данных
+//                    view.findNavController().navigate(R.id.action_gameFragment_to_gameOverFragment)
+
+                    view.findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameOverFragment(numQuestions, questionIndex))
                 }
             }
         }

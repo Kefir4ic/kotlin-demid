@@ -16,10 +16,10 @@
 
 package com.example.android.navigation
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -37,6 +37,48 @@ class GameWonFragment : Fragment() {
             it.findNavController().navigate(R.id.action_gameWonFragment_to_gameFragment)
         }
 
+//        передаем на экран значения в bundle
+//        в bundle хранятся хэши переменных
+//        requireArguments возвращает такой bundle
+        val args = GameWonFragmentArgs.fromBundle(requireArguments())
+        Toast.makeText(context, "Num Questions: ${args.numQuestions}; Num Correct: ${args.numQuestions}", Toast.LENGTH_LONG).show()
+
+//        настраиваем кнопку "Поделиться" на окне с победой в викторине
+        setHasOptionsMenu(true)
+
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.winner_menu, menu)
+
+//        если на телефоне не будет ни одного приложения которое должно выполнить стороннюю активность
+//        скроем кнопку поделиться
+        val intent = getShareIntent()
+        if (intent.resolveActivity(requireActivity().packageManager) == null) {
+            menu.findItem(R.id.share).isVisible = false
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.share -> startActivity(getShareIntent())
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+//    функция для создания Intent
+    private fun getShareIntent(): Intent {
+//        формируем строку для отправки
+        val args = GameWonFragmentArgs.fromBundle(requireArguments())
+        val shareString = "Num Questions: ${args.numQuestions}; Num Correct: ${args.numQuestions}"
+//    создаем Intent для отправки
+        val shareIntent = Intent(Intent.ACTION_SEND)
+//    устанавливаем тип текст
+        shareIntent.type = "text/plane"
+//    передаем строку для отправки
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareString)
+        return shareIntent
     }
 }
