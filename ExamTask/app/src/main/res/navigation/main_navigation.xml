@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/titleFragment">
+
+    <fragment
+        android:id="@+id/titleFragment"
+        android:name="com.example.examtask.TitleFragment"
+        android:label="TitleFragment" >
+        <action
+            android:id="@+id/action_titleFragment_to_calculatorFragment"
+            app:destination="@id/calculatorFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_addValueFragment"
+            app:destination="@id/addValueFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/calculatorFragment"
+        android:name="com.example.examtask.CalculatorFragment"
+        android:label="CalculatorFragment" >
+        <action
+            android:id="@+id/action_calculatorFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addValueFragment"
+        android:name="com.example.examtask.AddValueFragment"
+        android:label="AddValueFragment" >
+        <action
+            android:id="@+id/action_addValueFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.example.examtask.HelpFragment"
+        android:label="HelpFragment" >
+        <action
+            android:id="@+id/action_helpFragment_to_titleFragment"
+            app:destination="@id/titleFragment" />
+    </fragment>
+</navigation>
