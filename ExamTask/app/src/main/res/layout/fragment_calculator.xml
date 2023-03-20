@@ -8,57 +8,22 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/enter_value_group_text"
-            android:layout_width="294dp"
-            android:layout_height="46dp"
-            android:layout_marginTop="16dp"
-            android:hint="Enter name of group"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.589"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/enter_from_value_text"
-            android:layout_width="226dp"
-            android:layout_height="46dp"
-            android:layout_marginTop="40dp"
-            android:hint="Enter name of start value"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/enter_value_group_text" />
-
-        <EditText
-            android:id="@+id/enter_to_value_text"
-            android:layout_width="245dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="92dp"
-            android:hint="Enter name of finish value"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/enter_from_value_text" />
-
-        <EditText
             android:id="@+id/enter_value_text"
             android:layout_width="256dp"
             android:layout_height="39dp"
-            android:layout_marginTop="112dp"
+            android:layout_marginTop="40dp"
             android:hint="Enter value"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/enter_to_value_text" />
+            app:layout_constraintTop_toBottomOf="@+id/select_to_spinner" />
 
         <Button
             android:id="@+id/calculate_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="28dp"
             android:text="Calculate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -77,6 +42,79 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/calculate_button"
             tools:visibility="visible" />
+
+        <Spinner
+            android:id="@+id/select_group_spinner"
+            android:layout_width="223dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/select_group_text"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/select_from_spinner"
+            android:layout_width="220dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.975"
+            app:layout_constraintStart_toEndOf="@+id/select_from_text"
+            app:layout_constraintTop_toBottomOf="@+id/select_group_button" />
+
+        <Spinner
+            android:id="@+id/select_to_spinner"
+            android:layout_width="220dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.975"
+            app:layout_constraintStart_toEndOf="@+id/selct_to_text"
+            app:layout_constraintTop_toBottomOf="@+id/select_from_spinner" />
+
+        <TextView
+            android:id="@+id/select_group_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="48dp"
+            android:text="Select group"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/select_from_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="64dp"
+            android:text="select from"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/select_group_button" />
+
+        <TextView
+            android:id="@+id/selct_to_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="44dp"
+            android:text="select to"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/select_from_text" />
+
+        <Button
+            android:id="@+id/select_group_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="select"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/select_group_spinner" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
