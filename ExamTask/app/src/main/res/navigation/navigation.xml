@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/titleFragment"
-        android:name="com.example.examtask.TitleFragment"
+        android:name="com.example.examtask.title.TitleFragment"
         android:label="TitleFragment" >
         <action
             android:id="@+id/action_titleFragment_to_calculatorFragment"
@@ -23,14 +23,14 @@
     </fragment>
     <fragment
         android:id="@+id/calculatorFragment"
-        android:name="com.example.examtask.CalculatorFragment"
+        android:name="com.example.examtask.calculator.CalculatorFragment"
         android:label="CalculatorFragment" />
     <fragment
         android:id="@+id/addValueFragment"
-        android:name="com.example.examtask.AddValueFragment"
+        android:name="com.example.examtask.addvalue.AddValueFragment"
         android:label="AddValueFragment" />
     <fragment
         android:id="@+id/helpFragment"
-        android:name="com.example.examtask.HelpFragment"
+        android:name="com.example.examtask.help.HelpFragment"
         android:label="HelpFragment" />
 </navigation>

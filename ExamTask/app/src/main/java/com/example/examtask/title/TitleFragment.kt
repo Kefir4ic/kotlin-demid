@@ -1,4 +1,4 @@
-package com.example.examtask
+package com.example.examtask.title
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
+import com.example.examtask.R
 import com.example.examtask.databinding.FragmentTitleBinding
 
 class TitleFragment : Fragment() {
