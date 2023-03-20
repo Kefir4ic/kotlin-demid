@@ -1,9 +1,7 @@
 package com.example.examtask.addvalue
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.map
 import com.example.examtask.database.CurrencyValue
 import com.example.examtask.database.CurrencyValueDao
 import kotlinx.coroutines.*
