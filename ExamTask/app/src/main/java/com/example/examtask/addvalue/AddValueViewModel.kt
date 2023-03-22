@@ -19,15 +19,6 @@ class AddValueViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    fun checkAll(){
-        uiScope.launch {
-            withContext(Dispatchers.IO) {
-                val values = dao.getAllValues()
-                println(values.toString())
-            }
-        }
-    }
-
 
     fun onAddValue(currencyGroup: String, currencyName: String, currencyValue: String): String {
         if (currencyGroup == "")

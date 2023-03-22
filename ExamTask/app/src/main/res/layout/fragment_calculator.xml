@@ -12,7 +12,7 @@
             android:layout_width="256dp"
             android:layout_height="39dp"
             android:layout_marginTop="40dp"
-            android:hint="Enter value"
+            android:hint="@string/enter_value"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.483"
@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            android:text="Calculate"
+            android:text="@string/calculate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/enter_value_text" />
@@ -33,7 +33,7 @@
             android:id="@+id/result_text"
             android:layout_width="261dp"
             android:layout_height="56dp"
-            android:text="Result"
+            android:text="@string/result"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
@@ -58,10 +58,10 @@
             android:id="@+id/select_from_spinner"
             android:layout_width="220dp"
             android:layout_height="42dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="64dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.975"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/select_from_text"
             app:layout_constraintTop_toBottomOf="@+id/select_group_button" />
 
@@ -80,9 +80,9 @@
             android:id="@+id/select_group_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="48dp"
-            android:text="Select group"
+            android:text="@string/select_group"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,9 +90,9 @@
             android:id="@+id/select_from_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="64dp"
-            android:text="select from"
+            android:text="@string/select_from"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/select_group_button" />
 
@@ -100,9 +100,9 @@
             android:id="@+id/selct_to_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="44dp"
-            android:text="select to"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="48dp"
+            android:text="@string/select_to"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/select_from_text" />
 
@@ -111,7 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="select"
+            android:text="@string/select"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/select_group_spinner" />

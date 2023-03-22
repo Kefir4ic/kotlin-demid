@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Зачетное задание</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_name_of_group">Введите имя группы</string>
+    <string name="enter_name_of_start_value">Введите наименование величины</string>
+    <string name="enter_value_for_new">Введите значение величины</string>
+    <string name="add_value">Добавить</string>
+    <string name="enter_value">Введите количество</string>
+    <string name="calculate">Конвертировать</string>
+    <string name="result">Результат</string>
+    <string name="select_group">Выберите группу</string>
+    <string name="select_from">Начальная величина</string>
+    <string name="select_to">Конечная величина</string>
+    <string name="select">подтвердить</string>
+    <string name="text_with_info_about_app">Текст о приложении</string>
+    <string name="value_converter">Конвертер величин</string>
+    <string name="go_to_conveter">Конвертировать</string>
+    <string name="go_to_add_value">Добавить значение</string>
+    <string name="go_to_help">Помощь</string>
+</resources>
