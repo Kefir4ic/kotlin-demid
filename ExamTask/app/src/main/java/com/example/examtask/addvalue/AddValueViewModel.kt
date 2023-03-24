@@ -20,17 +20,17 @@ class AddValueViewModel(
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
 
-    fun onAddValue(currencyGroup: String, currencyName: String, currencyValue: String): String {
+    fun onAddValue(currencyGroup: String, currencyName: String, currencyValue: String): Int {
         if (currencyGroup == "")
-            return "Empty group name!"
+            return 1
         if (currencyName == "")
-            return "Empty value name!"
+            return 2
         if (currencyValue == "")
-            return "Empty value!"
+            return 3
         if (currencyValue.toFloatOrNull() == null)
-            return "Value is not Numeric!"
+            return 4
         addValue(currencyGroup, currencyName, currencyValue.toFloat())
-        return "Successfully added!"
+        return 0
     }
 
     private fun addValue(currencyGroup: String, currencyName: String, currencyValue: Float){

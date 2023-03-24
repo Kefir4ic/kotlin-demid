@@ -24,6 +24,13 @@ class AddValueFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val messages: Map<Int, String> = mapOf(
+            0 to getString(R.string.successfully_added),
+            1 to getString(R.string.empty_group_name),
+            2 to getString(R.string.empty_value_name),
+            3 to getString(R.string.empty_value),
+            4 to getString(R.string.value_not_numeric))
+
         val binding = DataBindingUtil.inflate<FragmentAddValueBinding>(
             inflater, R.layout.fragment_add_value, container, false)
 
@@ -38,9 +45,11 @@ class AddValueFragment : Fragment() {
             val currencyName = binding.enterNewFromValueText
             val currencyValue = binding.enterNewValueText
 
-            val message = viewModel.onAddValue(currencyGroup.text.toString(),
+            val code = viewModel.onAddValue(currencyGroup.text.toString(),
                 currencyName.text.toString(),
                 currencyValue.text.toString())
+
+            val message = messages.get(code)
 
             val duration = Toast.LENGTH_SHORT
             val toast = Toast.makeText(context, message, duration)

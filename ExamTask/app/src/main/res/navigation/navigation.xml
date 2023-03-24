@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/titleFragment"
         android:name="com.example.examtask.title.TitleFragment"
-        android:label="TitleFragment" >
+        android:label="@string/title_fragment">
+        <action
+            android:id="@+id/action_titleFragment_to_helpFragment"
+            app:destination="@id/helpFragment"
+            app:popUpTo="@id/titleFragment" />
         <action
             android:id="@+id/action_titleFragment_to_calculatorFragment"
             app:destination="@id/calculatorFragment"
@@ -16,21 +20,17 @@
             android:id="@+id/action_titleFragment_to_addValueFragment"
             app:destination="@id/addValueFragment"
             app:popUpTo="@id/titleFragment" />
-        <action
-            android:id="@+id/action_titleFragment_to_helpFragment"
-            app:destination="@id/helpFragment"
-            app:popUpTo="@id/titleFragment" />
     </fragment>
     <fragment
         android:id="@+id/calculatorFragment"
         android:name="com.example.examtask.calculator.CalculatorFragment"
-        android:label="CalculatorFragment" />
+        android:label="@string/calculator_fragment" />
     <fragment
         android:id="@+id/addValueFragment"
         android:name="com.example.examtask.addvalue.AddValueFragment"
-        android:label="AddValueFragment" />
+        android:label="@string/add_value_fragment" />
     <fragment
         android:id="@+id/helpFragment"
         android:name="com.example.examtask.help.HelpFragment"
-        android:label="HelpFragment" />
+        android:label="@string/help_fragment" />
 </navigation>

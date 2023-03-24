@@ -28,6 +28,14 @@ class CalculatorFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val messages: Map<String, String> = mapOf(
+            "Empty group name!" to getString(R.string.empty_group_name),
+            "Empty from name!" to getString(R.string.empty_from_name),
+            "Empty to name!" to getString(R.string.empty_to_name),
+            "Empty value!" to getString(R.string.empty_value),
+            "Value is not Numeric!" to getString(R.string.value_not_numeric),
+            "No value in memory!" to getString(R.string.db_problem))
+
         val binding = DataBindingUtil.inflate<FragmentCalculatorBinding>(
             inflater, R.layout.fragment_calculator, container, false)
 
@@ -72,14 +80,36 @@ class CalculatorFragment : Fragment() {
                     { selectedFrom = it[position] }
                     override fun onNothingSelected(p0: AdapterView<*>?) {} }
             })
+
+            binding.selectFromText.visibility = View.VISIBLE
+            binding.selectFromSpinner.visibility = View.VISIBLE
+            binding.selctToText.visibility = View.VISIBLE
+            binding.selectToSpinner.visibility = View.VISIBLE
+
+            binding.enterValueText.visibility = View.VISIBLE
+            binding.enterRondingTextView.visibility = View.VISIBLE
+            binding.enterRoundingText.visibility = View.VISIBLE
+
+            binding.calculateButton.visibility = View.VISIBLE
+            binding.resultText.visibility = View.VISIBLE
         }
 
         binding.calculateButton.setOnClickListener {
-            binding.resultText.text = viewModel.onCalculate(
-                selectedGroup,
-                selectedFrom,
-                selectedTo,
-                binding.enterValueText.text.toString())
+            viewModel.getValues(selectedGroup, selectedFrom, selectedTo).observe(viewLifecycleOwner, Observer {
+                val result = viewModel.onCalculate(
+                    selectedGroup,
+                    selectedFrom,
+                    selectedTo,
+                    binding.enterValueText.text.toString(),
+                    binding.enterRoundingText.text.toString(),
+                    it)
+                var text: String = if (result in messages.keys)
+                    messages.get(result).toString()
+                else
+                    result
+
+                binding.resultText.text = text
+            })
         }
         return binding.root
     }

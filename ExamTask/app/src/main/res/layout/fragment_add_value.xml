@@ -3,59 +3,68 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:scrollbarStyle="outsideInset">
 
-        <EditText
-            android:id="@+id/enter_new_value_group_text"
-            android:layout_width="294dp"
-            android:layout_height="46dp"
-            android:layout_marginTop="100dp"
-            android:hint="@string/enter_name_of_group"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/enter_new_from_value_text"
-            android:layout_width="226dp"
-            android:layout_height="46dp"
-            android:layout_marginTop="64dp"
-            android:hint="@string/enter_name_of_start_value"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/enter_new_value_group_text" />
+            <EditText
+                android:id="@+id/enter_new_value_group_text"
+                android:layout_width="294dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="100dp"
+                android:hint="@string/enter_name_of_group"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/enter_new_value_text"
-            android:layout_width="226dp"
-            android:layout_height="46dp"
-            android:layout_marginTop="100dp"
-            android:hint="@string/enter_value_for_new"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/enter_new_from_value_text" />
+            <EditText
+                android:id="@+id/enter_new_from_value_text"
+                android:layout_width="226dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="64dp"
+                android:hint="@string/enter_name_of_start_value"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enter_new_value_group_text" />
 
-        <Button
-            android:id="@+id/add_value_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="84dp"
-            android:text="@string/add_value"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/enter_new_value_text"
-            app:layout_constraintVertical_bias="0.484" />
+            <EditText
+                android:id="@+id/enter_new_value_text"
+                android:layout_width="226dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="64dp"
+                android:digits="0123456789."
+                android:hint="@string/enter_value_for_new"
+                android:inputType="numberDecimal"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enter_new_from_value_text" />
+
+            <Button
+                android:id="@+id/add_value_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/add_value"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enter_new_value_text"
+                app:layout_constraintVertical_bias="1.0" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </layout>

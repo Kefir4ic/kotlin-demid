@@ -3,11 +3,12 @@ package com.example.examtask.calculator
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import com.example.examtask.database.CurrencyValue
 import com.example.examtask.database.CurrencyValueDao
 import kotlinx.coroutines.*
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 class CalculatorViewModel(
     val dao: CurrencyValueDao,
@@ -16,17 +17,11 @@ class CalculatorViewModel(
 
     private var viewModelJob = Job()
 
-    private var currencyFrom = MutableLiveData<Float>()
-    private var currencyTo = MutableLiveData<Float>()
-
 
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
     }
-
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-
 
     fun createAdapterForGroupSpinner(): LiveData<List<String>> {
          val allValues = dao.getAllValues()
@@ -55,7 +50,9 @@ class CalculatorViewModel(
         return names.distinct()
     }
 
-    fun onCalculate(selectedGroup: String, selectedFrom: String, selectedTo: String, valueFrom: String): String {
+    fun onCalculate(selectedGroup: String, selectedFrom: String, selectedTo: String,
+                    valueFrom: String, roundingString: String, values: List<Double>): String {
+        var rounding = 2
         if (selectedGroup == "")
             return "Empty group name!"
         if (selectedFrom == "")
@@ -64,39 +61,40 @@ class CalculatorViewModel(
             return "Empty to name!"
         if (valueFrom == "")
             return "Empty value!"
-        if (valueFrom.toFloatOrNull() == null || valueFrom.toIntOrNull() == null)
+        if (valueFrom.toFloatOrNull() == null)
             return "Value is not Numeric!"
-        return calculate(selectedGroup, selectedFrom, selectedTo, valueFrom.toFloat())
+        if (values.isEmpty())
+            return "No value in memory!"
+        if (roundingString != "")
+            rounding = roundingString.toInt()
+        return calculate(valueFrom.toDouble(), values, selectedTo, rounding)
     }
 
-    private fun calculate(selectedGroup: String, selectedFrom: String, selectedTo: String, valueFrom: Float): String {
-
-        currencyFrom.value = getValue(selectedGroup, selectedFrom)
-        currencyTo.value = getValue(selectedGroup, selectedTo)
-
-        val valueCurrencyFrom = currencyFrom.value
-        val valueCurrencyTo = currencyTo.value
-        if (valueCurrencyFrom != null && valueCurrencyTo != null) {
-            val total = valueFrom * valueCurrencyFrom / valueCurrencyTo
-            return total.toString()
-        }
-        println(currencyFrom.value)
-        println(valueCurrencyTo)
-        return "No value in memory!"
+    private fun calculate(valueFrom: Double, values: List<Double>, selectedTo: String, rounding: Int): String {
+        val numerator = (valueFrom * values[0]).toBigDecimal()
+        val result = numerator.div(values[1].toBigDecimal())
+        val total = result.setScale(rounding, RoundingMode.UP).toFloat()
+        val formatString = "%.${rounding}f"
+        return "${String.format(formatString, total)} $selectedTo"
     }
 
-
-    private fun getValue(group: String, name: String): Float? {
+    fun getValues(group: String, selectedFrom: String, selectedTo: String): LiveData<List<Double>> {
         val groupValues = dao.getGroup(group)
-        return groupValues.map { getCurrency(it, name) }.value
+        return groupValues.map { getCurrency(it, selectedFrom, selectedTo) }
     }
 
-    private fun getCurrency(values: List<CurrencyValue>, name: String): Float {
+    private fun getCurrency(values: List<CurrencyValue>, selectedFrom: String, selectedTo: String): List<Double> {
+        val valuesToFrom: MutableList<Double> = mutableListOf()
         for (value in values) {
-            if (name == value.currencyName) {
-                return value.currencyValue
+            if (selectedFrom == value.currencyName) {
+                valuesToFrom.add(value.currencyValue.toDouble())
             }
         }
-        return 1.0F
+        for (value in values) {
+            if (selectedTo == value.currencyName) {
+                valuesToFrom.add(value.currencyValue.toDouble())
+            }
+        }
+        return valuesToFrom
     }
 }

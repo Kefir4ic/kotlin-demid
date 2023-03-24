@@ -18,4 +18,22 @@
     <string name="go_to_conveter">Конвертировать</string>
     <string name="go_to_add_value">Добавить значение</string>
     <string name="go_to_help">Помощь</string>
+
+    <string name="successfully_added">Успешно добавлено!</string>
+    <string name="empty_group_name">Пустое имя группы!</string>
+    <string name="empty_value_name">Пустое наименование величины!</string>
+    <string name="empty_value">Пустое значение величины!</string>
+    <string name="value_not_numeric">Введенная величина - не число</string>
+    <string name="empty_from_name">Пустое стартовое наименование!</string>
+    <string name="empty_to_name">Пустое конечное наименование!</string>
+    <string name="db_problem">Значение отсутсвует в приложении!</string>
+
+    <string name="title_fragment">Главная</string>
+    <string name="add_value_fragment">Добавить значение</string>
+    <string name="calculator_fragment">Калькулятор</string>
+    <string name="help_fragment">Помощь</string>
+
+    <string name="enter_rounding">По умолчанию: 2 знака</string>
+    <string name="enter_rounding_textview">Количество знаков после запятой</string>
+
 </resources>

@@ -16,7 +16,4 @@ interface CurrencyValueDao {
 
     @Query("SELECT * FROM currency_value_table")
     fun getAllValues(): LiveData<List<CurrencyValue>>
-
-    @Query("SELECT * FROM currency_value_table WHERE currency_group = :group AND currency_name = :name ORDER BY id DESC LIMIT 1")
-    fun getValue(group: String, name: String): CurrencyValue?
 }
