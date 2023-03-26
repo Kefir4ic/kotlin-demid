@@ -2,6 +2,8 @@ package com.example.examtask.addvalue
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.map
 import com.example.examtask.database.CurrencyValue
 import com.example.examtask.database.CurrencyValueDao
 import kotlinx.coroutines.*
@@ -19,8 +21,23 @@ class AddValueViewModel(
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
+    fun createGroupValuesNames(group: String): LiveData<List<String>> {
+        val groupValues = dao.getGroup(group)
+        return groupValues.map { _createListOfNames(it) }
+    }
 
-    fun onAddValue(currencyGroup: String, currencyName: String, currencyValue: String): Int {
+    private fun _createListOfNames(values: List<CurrencyValue>): List<String> {
+        val names: MutableList<String> = mutableListOf()
+        for (value in values) {
+            names.add(value.currencyName)
+        }
+        return names.distinct()
+    }
+
+
+    fun onAddValue(currencyGroup: String, currencyName: String, currencyValue: String, namesInGroup: List<String>): Int {
+        println(namesInGroup)
+        println(currencyName)
         if (currencyGroup == "")
             return 1
         if (currencyName == "")
@@ -29,6 +46,8 @@ class AddValueViewModel(
             return 3
         if (currencyValue.toFloatOrNull() == null)
             return 4
+        if (currencyName in namesInGroup)
+            return 5
         addValue(currencyGroup, currencyName, currencyValue.toFloat())
         return 0
     }

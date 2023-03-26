@@ -39,7 +39,7 @@
     "currencyName": "kg",
     "currencyValue":  1000.0},
   {"currencyGroup": "weight",
-    "currencyName": "ct",
+    "currencyName": "c",
     "currencyValue":  100000.0},
   {"currencyGroup": "weight",
     "currencyName": "t",

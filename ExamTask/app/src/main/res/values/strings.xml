@@ -13,7 +13,6 @@
     <string name="select_from">select from</string>
     <string name="select_to">select to</string>
     <string name="select">select</string>
-    <string name="text_with_info_about_app">Text with info about app</string>
     <string name="value_converter">Value Converter</string>
     <string name="go_to_conveter">Go to conveter</string>
     <string name="go_to_add_value">go to add value</string>
@@ -23,6 +22,7 @@
     <string name="empty_group_name">Empty group name!</string>
     <string name="empty_value_name">Empty value name!</string>
     <string name="empty_value">Empty value!</string>
+    <string name="same_name">Value with same already in group</string>
     <string name="value_not_numeric">Value is not numeric!</string>
     <string name="empty_from_name">Empty from name!</string>
     <string name="empty_to_name">Empty to name!</string>
@@ -34,5 +34,38 @@
     <string name="help_fragment">Help</string>
     <string name="enter_rounding">Default scale 2</string>
     <string name="enter_rounding_textview">Enter rounding</string>
+
+    <string name="text_with_info_about_app">
+        This application allows you to convert some values into others.
+        \n\n
+        By default, the application can translate the values of length, weight and volume.
+        \n\n
+        To add a new value to the converter
+        \n\n
+        1. go to the "Add value" tab
+        \n
+        2. enter the name of the group, the name of the value and the value of the value
+        \n\n
+        2.1 (try to set values relative to one value. For example, for length values, set values relative to meters, for weight - relative to grams, and for volume - relative to liters).
+        \n\n
+        3. After entering all the values, click the "Add" button and you will see either a message about adding if all the parameters are entered correctly,
+        or an error message in case of some problem in the data.
+        \n\n
+        To add your converter, simply enter a unique group name when adding a new value.
+        \n\n
+        To convert values
+        \n\n
+        1. go to the "Convert" tab.
+        \n\n
+        2. First, select the converter group (you can choose either from the default groups or from the ones you added).
+        \n\n
+        3. Click the "Confirm" button.
+        \n\n
+        4. Now select the initial and final values that you need.
+        \n\n
+        5. Enter the number in the initial value and the number of decimal places for rounding (by default, 2 decimal places are used).
+        \n\n
+        6. Click the convert button and in the "Result" field you will see either an error message or the converted value.
+    </string>
 
 </resources>
