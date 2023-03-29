@@ -60,7 +60,39 @@ class CalculatorFragment : Fragment() {
 
         viewModel.createAdapterForGroupSpinner().observe(viewLifecycleOwner, Observer {
             val groupSpinner = binding.selectGroupSpinner
-            _createGroupSpinner(groupSpinner, it, binding)
+            groupSpinner.adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, it)
+            groupsList = it
+            groupSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long)
+                {
+                    if (selectedGroup != it[position]){
+                        binding.selectFromText.visibility = View.GONE
+                        binding.selectFromSpinner.visibility = View.GONE
+                        binding.selctToText.visibility = View.GONE
+                        binding.selectToSpinner.visibility = View.GONE
+
+                        binding.enterValueText.visibility = View.GONE
+                        binding.enterRondingTextView.visibility = View.GONE
+                        binding.enterRoundingText.visibility = View.GONE
+
+                        binding.calculateButton.visibility = View.GONE
+                        binding.resultText.visibility = View.GONE
+
+                        binding.enterValueText.setText("")
+                        binding.enterRoundingText.setText("")
+                        binding.resultText.setText(R.string.result)
+
+                        enterValueText = ""
+                        enterRoundingText = ""
+                        resultText = ""
+                    }
+                    selectedGroup = it[position]
+                }
+                override fun onNothingSelected(p0: AdapterView<*>?) {} }
+            if (selectedGroup == "")
+                groupSpinner.setSelection(0)
+            else
+                groupSpinner.setSelection(it.indexOf(selectedGroup))
         })
 
 
@@ -185,39 +217,5 @@ class CalculatorFragment : Fragment() {
             adapter.setSelection(0)
         else
             adapter.setSelection(values.indexOf(selectedTo))
-    }
-
-    fun _createGroupSpinner(adapter: Spinner, values: List<String>, binding: FragmentCalculatorBinding) {
-        adapter.adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, values)
-        groupsList = values
-        adapter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long)
-            {
-                selectedGroup = values[position]
-                binding.selectFromText.visibility = View.GONE
-                binding.selectFromSpinner.visibility = View.GONE
-                binding.selctToText.visibility = View.GONE
-                binding.selectToSpinner.visibility = View.GONE
-
-                binding.enterValueText.visibility = View.GONE
-                binding.enterRondingTextView.visibility = View.GONE
-                binding.enterRoundingText.visibility = View.GONE
-
-                binding.calculateButton.visibility = View.GONE
-                binding.resultText.visibility = View.GONE
-
-                binding.enterValueText.setText("")
-                binding.enterRoundingText.setText("")
-                binding.resultText.setText(R.string.result)
-
-                enterValueText = ""
-                enterRoundingText = ""
-                resultText = ""
-            }
-            override fun onNothingSelected(p0: AdapterView<*>?) {} }
-        if (selectedGroup == "")
-            adapter.setSelection(0)
-        else
-            adapter.setSelection(values.indexOf(selectedGroup))
     }
 }
