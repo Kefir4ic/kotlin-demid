@@ -18,6 +18,7 @@ class AddValueFragment : Fragment() {
     private var enterNewValueGroupText = ""
     private var enterNewFromValueText = ""
     private var enterNewValueText = ""
+    private var messageCode = -1
     private var namesInGroup = listOf<String>()
 
     private lateinit var viewModel: AddValueViewModel
@@ -43,6 +44,7 @@ class AddValueFragment : Fragment() {
             enterNewValueGroupText = savedInstanceState.getString("key_group_name").toString()
             enterNewFromValueText = savedInstanceState.getString("key_value_name").toString()
             enterNewValueText = savedInstanceState.getString("key_value").toString()
+            messageCode = savedInstanceState.getInt("key_message_code")
             binding.enterNewValueGroupText.setText(enterNewValueGroupText)
             binding.enterNewValueGroupText.setText(enterNewFromValueText)
             binding.enterNewValueText.setText(enterNewValueText)
@@ -63,23 +65,26 @@ class AddValueFragment : Fragment() {
             enterNewFromValueText = binding.enterNewFromValueText.text.toString()
             enterNewValueText = binding.enterNewValueText.text.toString()
 
-            viewModel.createGroupValuesNames(enterNewValueGroupText).observe(viewLifecycleOwner, Observer {
+            viewModel.createGroupValuesNames(currencyGroup.text.toString()).observe(viewLifecycleOwner, Observer {
                 namesInGroup = it
-                val code = viewModel.onAddValue(currencyGroup.text.toString(),
-                    currencyName.text.toString(),
-                    currencyValue.text.toString(),
-                    namesInGroup)
+                if (messageCode == -1) {
+                    val code = viewModel.onAddValue(
+                        currencyGroup.text.toString(),
+                        currencyName.text.toString(),
+                        currencyValue.text.toString(),
+                        namesInGroup
+                    )
 
-                val message = messages.get(code)
+                    messageCode = code
 
-                val duration = Toast.LENGTH_SHORT
-                val toast = Toast.makeText(context, message, duration)
-                toast.show()
+                    val message = messages.get(code)
 
-                currencyGroup.text.clear()
-                currencyName.text.clear()
-                currencyValue.text.clear()
+                    val duration = Toast.LENGTH_SHORT
+                    val toast = Toast.makeText(context, message, duration)
+                    toast.show()
+                }
             })
+            messageCode = -1
         }
 
 
@@ -91,5 +96,6 @@ class AddValueFragment : Fragment() {
         outState.putString("key_group_name", enterNewValueGroupText)
         outState.putString("key_value_name", enterNewFromValueText)
         outState.putString("key_value", enterNewValueText)
+        outState.putInt("key_message_code",messageCode)
     }
 }

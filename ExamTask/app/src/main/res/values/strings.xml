@@ -2,11 +2,11 @@
     <string name="app_name">ExamTask</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="enter_name_of_group">Enter name of group</string>
-    <string name="enter_name_of_start_value">Enter name of start value</string>
-    <string name="enter_value_for_new">Enter value for new</string>
+    <string name="enter_name_of_group">Enter name of group.\nUse any symbols</string>
+    <string name="enter_name_of_start_value">Enter name of start value.\nUse any symbols</string>
+    <string name="enter_value_for_new">Enter value for new.\nUse only digits and point</string>
     <string name="add_value">add value</string>
-    <string name="enter_value">Enter value</string>
+    <string name="enter_value">Enter value.\nUse only digits and point</string>
     <string name="calculate">Calculate</string>
     <string name="result">Result</string>
     <string name="select_group">Select group</string>
@@ -32,7 +32,7 @@
     <string name="add_value_fragment">Add value</string>
     <string name="calculator_fragment">Calculator</string>
     <string name="help_fragment">Help</string>
-    <string name="enter_rounding">Default scale 2</string>
+    <string name="enter_rounding">Default scale 2.\nUse only digits</string>
     <string name="enter_rounding_textview">Enter rounding</string>
 
     <string name="text_with_info_about_app">

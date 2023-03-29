@@ -36,8 +36,6 @@ class AddValueViewModel(
 
 
     fun onAddValue(currencyGroup: String, currencyName: String, currencyValue: String, namesInGroup: List<String>): Int {
-        println(namesInGroup)
-        println(currencyName)
         if (currencyGroup == "")
             return 1
         if (currencyName == "")

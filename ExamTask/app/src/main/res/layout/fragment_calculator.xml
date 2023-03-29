@@ -13,16 +13,16 @@
 
             <EditText
                 android:id="@+id/enter_value_text"
-                android:layout_width="256dp"
-                android:layout_height="39dp"
-                android:layout_marginTop="36dp"
+                android:layout_width="350dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="40dp"
                 android:digits="0123456789."
                 android:hint="@string/enter_value"
                 android:inputType="numberDecimal"
                 android:textAlignment="center"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.451"
+                app:layout_constraintHorizontal_bias="0.512"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/selct_to_text"
                 tools:visibility="invisible" />
@@ -153,8 +153,8 @@
 
             <EditText
                 android:id="@+id/enter_rounding_text"
-                android:layout_width="213dp"
-                android:layout_height="56dp"
+                android:layout_width="350dp"
+                android:layout_height="90dp"
                 android:layout_marginTop="20dp"
                 android:digits="0123456789"
                 android:hint="@string/enter_rounding"

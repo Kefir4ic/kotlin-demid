@@ -73,7 +73,7 @@ class CalculatorViewModel(
     private fun calculate(valueFrom: Double, values: List<Double>, selectedTo: String, rounding: Int): String {
         val numerator = (valueFrom * values[0]).toBigDecimal()
         val result = numerator.div(values[1].toBigDecimal())
-        val total = result.setScale(rounding, RoundingMode.UP).toFloat()
+        val total = result.setScale(rounding, RoundingMode.HALF_UP).toFloat()
         val formatString = "%.${rounding}f"
         return "${String.format(formatString, total)} $selectedTo"
     }

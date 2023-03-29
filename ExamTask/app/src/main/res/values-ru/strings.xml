@@ -2,11 +2,11 @@
     <string name="app_name">Зачетное задание</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="enter_name_of_group">Введите имя группы</string>
-    <string name="enter_name_of_start_value">Введите наименование величины</string>
-    <string name="enter_value_for_new">Введите значение величины</string>
+    <string name="enter_name_of_group">Введите имя группы.\nМожно вводить любые символы</string>
+    <string name="enter_name_of_start_value">Введите наименование величины.\nМожно вводить любые символы</string>
+    <string name="enter_value_for_new">Введите значение величины.\nМожно вводить цифры и точку</string>
     <string name="add_value">Добавить</string>
-    <string name="enter_value">Введите количество</string>
+    <string name="enter_value">Введите количество.\nМожно вводить цифры и точку</string>
     <string name="calculate">Конвертировать</string>
     <string name="result">Результат</string>
     <string name="select_group">Выберите группу</string>
@@ -66,7 +66,7 @@
     <string name="calculator_fragment">Калькулятор</string>
     <string name="help_fragment">Помощь</string>
 
-    <string name="enter_rounding">По умолчанию: 2 знака</string>
+    <string name="enter_rounding">По умолчанию: 2 знака.\nМожно вводить только цифры</string>
     <string name="enter_rounding_textview">Количество знаков после запятой</string>
 
 </resources>
